@@ -190,6 +190,10 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\DiseaseDatabase.mdf" />
+    <Content Include="App_Data\DiseaseDatabase_log.ldf">
+      <DependentUpon>DiseaseDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\DiseasesDatabase.mdf" />
     <Content Include="App_Data\DiseasesDatabase_log.ldf">
       <DependentUpon>DiseasesDatabase.mdf</DependentUpon>

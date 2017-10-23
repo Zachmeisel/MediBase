@@ -207,6 +207,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="PublishDisease.aspx" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -399,6 +400,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PublishDisease.aspx.cs">
+      <DependentUpon>PublishDisease.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublishDisease.aspx.designer.cs">
+      <DependentUpon>PublishDisease.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

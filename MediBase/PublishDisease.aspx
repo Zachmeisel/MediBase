@@ -10,6 +10,15 @@
         <p>&nbsp;</p>
         Phenotype:
     <asp:TextBox ID="TextBox2" runat="server" Width="204px"></asp:TextBox>
+        <p>&nbsp;</p>
+        Symptoms:
+    <asp:TextBox ID="TextBox3" runat="server" Width="204px"></asp:TextBox>
+        <p>
+            <asp:SqlDataSource ID="VectorsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT [Name], [Description] FROM [Vectors]" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="DiseaseDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Diseases]"></asp:SqlDataSource>
+        </p>
+        Aliases:
+    <asp:TextBox ID="TextBox4" runat="server" Width="204px"></asp:TextBox>
 </div>
 
 </asp:Content>

@@ -11,6 +11,12 @@ namespace MediBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+         //   DiseaseDataSource.InsertCommand
+         //   
+        }
+        //TODO Delete me
+        protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
 
         }
     }

@@ -85,22 +85,22 @@ namespace MediBase {
         protected global::System.Web.UI.WebControls.Button WeakSymptomsButton;
         
         /// <summary>
-        /// TextBox4 control.
+        /// Aliases control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox Aliases;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// VectorDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList VectorDropDown;
         
         /// <summary>
         /// SubmitButton0 control.
@@ -112,13 +112,31 @@ namespace MediBase {
         protected global::System.Web.UI.WebControls.Button SubmitButton0;
         
         /// <summary>
-        /// Pathogen control.
+        /// Disease_VectorsDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Pathogen;
+        protected global::System.Web.UI.WebControls.SqlDataSource Disease_VectorsDataSource;
+        
+        /// <summary>
+        /// PathogenDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PathogenDataSource;
+        
+        /// <summary>
+        /// AliasesDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource AliasesDataSource;
         
         /// <summary>
         /// SymptomsDataSource control.

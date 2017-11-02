@@ -46,13 +46,20 @@ namespace MediBase
                 DiseaseDataSource.InsertParameters.Add("Description", DiseaseDescription.Text);
                 DiseaseDataSource.InsertParameters.Add("Prognosis", DiseasePrognosis.Text);
                 DiseaseDataSource.InsertParameters.Add("Phenotype_Id", PathogenDropDown.SelectedValue);
-                DiseaseDataSource.InsertParameters.Add("DiseaseId", DiseaseNameText.Text);
-
-                DiseaseDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                DiseaseDataSource.InsertCommand = "INSERT INTO Diseases(Name, Description, Prognosis, Phenotype_Id) VALUES(@Name, @Description, @Prognosis, @Phenotype_Id); SET @DiseaseId = SCOPE_IDENTITY();";
-                DiseaseDataSource.Insert();
+                // DiseaseDataSource.InsertParameters.Add("DiseaseId", DiseaseNameText.Text);
+                DiseaseDataSource.InsertParameters.Add("DiseaseId", "");
                 
 
+                DiseaseDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+                DiseaseDataSource.InsertCommand = "INSERT INTO Diseases(Name, Description, Prognosis, Phenotype_Id) VALUES(@Name, @Description, @Prognosis, @Phenotype_Id) SET @IdReturn=SCOPE_IDENTITY();";
+                DiseaseDataSource.Insert();
+
+                DiseaseNameText.Text = "";
+                DiseaseDescription.Text = "";
+                DiseasePrognosis.Text = "";
+                WeakSymptomName.Text = "";
+                WeakSymptomDescription.Text = "";
+                Aliases.Text = "";
             }
             else
             {
@@ -82,11 +89,11 @@ namespace MediBase
                 }
 
             }
-
+            
         }
         protected void DiseaseDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
-            string Data_Id = e.Command.Parameters["@DiseaseId"].Value.ToString();
+            string Data_Id = e.Command.Parameters["@IdReturn"].Value.ToString();
             
                 SymptomsDataSource.InsertParameters.Add("SymptomName", WeakSymptomName.Text);
                 SymptomsDataSource.InsertParameters.Add("SymptomDescription", WeakSymptomDescription.Text);

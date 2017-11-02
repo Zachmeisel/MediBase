@@ -1,7 +1,8 @@
-﻿<%@ Page Title="Publish Disease" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %></h2>
+    <p>&nbsp;</p>
+    <h2><%: Title %>Publish Disease</h2>
     <h3>Add a disease to our ever growing database</h3>
     <p>Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts.</p>
 <p>&nbsp;</p>
@@ -35,20 +36,21 @@
     <asp:TextBox ID="DiseaseDescription" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
         <asp:Button ID="DiseaseDescriptionButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" Visible="False" />
         <p>&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prognosis:
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; Prognosis:
     <asp:TextBox ID="DiseasePrognosis" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
         </p>
         <p>&nbsp;</p>
-        Pathogen:<asp:DropDownList ID="PathogenDropDown" runat="server" DataSourceID="PathogenDataSource" DataTextField="Name" DataValueField="Id" Height="16px" Width="186px">
+        &nbsp;Pathogen:<asp:DropDownList ID="PathogenDropDown" runat="server" DataSourceID="PathogenDataSource" DataTextField="Name" DataValueField="Id" Height="16px" Width="186px">
         </asp:DropDownList>
 &nbsp;<br />
         <br />
         <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Symptoms Name:
     <asp:TextBox ID="WeakSymptomName" runat="server" Width="259px"></asp:TextBox>
         <br />
         <br />
-&nbsp;Symptoms Description:
+&nbsp;&nbsp;&nbsp;&nbsp; Symptoms Description:
     <asp:TextBox ID="WeakSymptomDescription" runat="server" Width="256px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
         <asp:Button ID="WeakSymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" />
         <p>

@@ -46,13 +46,13 @@ namespace MediBase
                 DiseaseDataSource.InsertParameters.Add("Description", DiseaseDescription.Text);
                 DiseaseDataSource.InsertParameters.Add("Prognosis", DiseasePrognosis.Text);
                 DiseaseDataSource.InsertParameters.Add("Phenotype_Id", PathogenDropDown.SelectedValue);
-               // DiseaseDataSource.InsertParameters.Add("DiseaseId", DiseaseNameText.Text);
+                DiseaseDataSource.InsertParameters.Add("DiseaseId", DiseaseNameText.Text);
 
                 DiseaseDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                DiseaseDataSource.InsertCommand = "INSERT INTO Diseases(Name, Description, Prognosis, Phenotype_Id) VALUES(@Name, @Description, @Prognosis, @Phenotype_Id); Set @DiseaseId = SCOPE_IDENTITY();";
+                DiseaseDataSource.InsertCommand = "INSERT INTO Diseases(Name, Description, Prognosis, Phenotype_Id) VALUES(@Name, @Description, @Prognosis, @Phenotype_Id); SET @DiseaseId = SCOPE_IDENTITY();";
                 DiseaseDataSource.Insert();
                 
-                
+
             }
             else
             {
@@ -102,11 +102,12 @@ namespace MediBase
 
                 for(int a = 0; a < lst.Length; a++)
                 {
-                    AliasesDataSource.InsertParameters.Add("AliasName", lst[a]);
+                string check = "AliasName" + a;
+                    AliasesDataSource.InsertParameters.Add(check, lst[a]);
                     AliasesDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                    AliasesDataSource.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@AliasName, " + Data_Id + ")";
+                    AliasesDataSource.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@"+check+", " + Data_Id + ")";
                     AliasesDataSource.Insert();
-            }
+                }
 
                 Disease_VectorsDataSource.InsertParameters.Add("Vector_Id", VectorDropDown.SelectedValue);
                 Disease_VectorsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;

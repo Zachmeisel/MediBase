@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %>- My ASP.NET Application</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -71,6 +71,8 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
+                <asp:TextBox ID="TextBox1" runat="server" Width="182px"></asp:TextBox>
+                <asp:Button ID="SearchButton" runat="server" Text="Search" />
             </div>
         </div>
         <div class="container body-content">
@@ -78,7 +80,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>- My ASP.NET Application</p>
             </footer>
         </div>
     </form>

@@ -66,6 +66,12 @@ namespace MediBase
                 }
             }
         }
+        protected void search_button_click(object sender, EventArgs e)
+        {
+            string search_disease;
+            search_disease = TextBox1;
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

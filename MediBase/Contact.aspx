@@ -5,14 +5,13 @@
     <h2><%: Title %>Contact</h2>
     <h3>Your contact page.</h3>
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
+        One MediBase Way<br />
+        Manchester, NH <br />
         <abbr title="Phone">P:</abbr>
-        425.555.0100
+        603.660.3471
     </address>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        <strong>Support:</strong>   <a href="zachary.meisel@snhu.edu">zachary.meisel@snhu.edu</a><br />
     </address>
 </asp:Content>

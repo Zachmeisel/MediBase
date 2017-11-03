@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <h2>Add Disease</h2>
             <p>
-                YOu can research and add your own diseases to our evergrowing databaase
+                You can research and add your own diseases to our evergrowing databaase
             </p>
             <p>
                 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>

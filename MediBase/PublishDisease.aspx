@@ -48,11 +48,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Symptoms Name:
     <asp:TextBox ID="WeakSymptomName" runat="server" Width="259px"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Button ID="SymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" ToolTip="To add a symptom not coming up" />
         <br />
-        <br />
-&nbsp;&nbsp;&nbsp;&nbsp; Symptoms Description:
-    <asp:TextBox ID="WeakSymptomDescription" runat="server" Width="256px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
-        <asp:Button ID="WeakSymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" />
         <p>
             &nbsp;</p>
         Aliases:
@@ -60,8 +58,14 @@
         <br />
         <br />
         Vectors:
-        <asp:DropDownList ID="VectorDropDown" runat="server" DataSourceID="VectorsDataSource" DataTextField="Name" DataValueField="Id" Height="18px" Width="162px">
-        </asp:DropDownList>
+        
+
+        <br />
+        <asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="VectorsDataSource" DataTextField="Name" DataValueField="Id" TextAlign="Left">
+            </asp:CheckBoxList>
+        </asp:Panel>
+        <br />
         <br />
         <br />
         <asp:Button ID="SubmitButton0" runat="server" OnClick="SubmitButton0_Click" Text="Submit" Width="95px" />

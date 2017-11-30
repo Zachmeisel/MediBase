@@ -213,6 +213,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="PublishDisease.aspx" />
+    <Content Include="AddSymptoms.aspx" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -412,6 +413,13 @@
     </Compile>
     <Compile Include="PublishDisease.aspx.designer.cs">
       <DependentUpon>PublishDisease.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddSymptoms.aspx.cs">
+      <DependentUpon>AddSymptoms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddSymptoms.aspx.designer.cs">
+      <DependentUpon>AddSymptoms.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

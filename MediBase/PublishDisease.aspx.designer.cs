@@ -67,22 +67,13 @@ namespace MediBase {
         protected global::System.Web.UI.WebControls.TextBox WeakSymptomName;
         
         /// <summary>
-        /// WeakSymptomDescription control.
+        /// SymptomsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox WeakSymptomDescription;
-        
-        /// <summary>
-        /// WeakSymptomsButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button WeakSymptomsButton;
+        protected global::System.Web.UI.WebControls.Button SymptomsButton;
         
         /// <summary>
         /// Aliases control.
@@ -94,13 +85,22 @@ namespace MediBase {
         protected global::System.Web.UI.WebControls.TextBox Aliases;
         
         /// <summary>
-        /// VectorDropDown control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList VectorDropDown;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
+        /// CheckBoxList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
         
         /// <summary>
         /// SubmitButton0 control.

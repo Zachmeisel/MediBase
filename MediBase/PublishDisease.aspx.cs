@@ -20,8 +20,8 @@ namespace MediBase
 
         }
 
-        protected void StrongSymptomsButton_Click(object sender, EventArgs e)
-        {
+        //protected void StrongSymptomsButton_Click(object sender, EventArgs e)
+        //{
             //SymptomsDataSource.InsertParameters.Add("Name", StrongSymptomName.Text);
             //SymptomsDataSource.InsertParameters.Add("Description", StrongSymptomDescription.Text);
             //SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
@@ -29,7 +29,7 @@ namespace MediBase
 
             //SymptomsDataSource.Insert();
 
-        }
+        //}
 
         protected void SubmitButton0_Click(object sender, EventArgs e)
         {
@@ -37,10 +37,19 @@ namespace MediBase
             DiseaseDescription.BorderColor = System.Drawing.Color.White;
             DiseasePrognosis.BorderColor = System.Drawing.Color.White;
             WeakSymptomName.BorderColor = System.Drawing.Color.White;
-            WeakSymptomDescription.BorderColor = System.Drawing.Color.White;
             Aliases.BorderColor = System.Drawing.Color.White;
-            
-            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && WeakSymptomName.Text != "" && WeakSymptomDescription.Text != "" && Aliases.Text != "")
+
+            int count = 0;
+            for (int a = 0; a < 5; a++)
+            {
+                if (CheckBoxList1.Items[a].Selected)
+                {
+                    count++;
+                }
+            }
+
+            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && WeakSymptomName.Text != ""
+                && Aliases.Text != "" && count != 0)
             {
                 DiseaseDataSource.InsertParameters.Add("Name", DiseaseNameText.Text);
                 DiseaseDataSource.InsertParameters.Add("Description", DiseaseDescription.Text);
@@ -58,8 +67,8 @@ namespace MediBase
                 DiseaseDescription.Text = "";
                 DiseasePrognosis.Text = "";
                 WeakSymptomName.Text = "";
-                WeakSymptomDescription.Text = "";
                 Aliases.Text = "";
+                CheckBoxList1.ClearSelection();
             }
             else
             {
@@ -79,16 +88,13 @@ namespace MediBase
                 {
                     WeakSymptomName.BorderColor = System.Drawing.Color.Red;
                 }
-                if (WeakSymptomDescription.Text == "")
-                {
-                    WeakSymptomDescription.BorderColor = System.Drawing.Color.Red;
-                }
                 if (Aliases.Text == "")
                 {
                     Aliases.BorderColor = System.Drawing.Color.Red;
                 }
 
-            }
+
+                }
             
         }
         protected void DiseaseDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
@@ -96,9 +102,8 @@ namespace MediBase
             string Data_Id = e.Command.Parameters["@IdReturn"].Value.ToString();
             
                 SymptomsDataSource.InsertParameters.Add("SymptomName", WeakSymptomName.Text);
-                SymptomsDataSource.InsertParameters.Add("SymptomDescription", WeakSymptomDescription.Text);
                 SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name, Description) VALUES(@SymptomName, @SymptomDescription)";
+                SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name) VALUES(@SymptomName)";
 
                 SymptomsDataSource.Insert();
 
@@ -115,17 +120,28 @@ namespace MediBase
                     AliasesDataSource.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@"+check+", " + Data_Id + ")";
                     AliasesDataSource.Insert();
                 }
+            CheckBoxList chkbx = (CheckBoxList)FindControl("CheckBoxList1");
+            for (int b = 0; b < 5; b++)
+            {
+                string check1 = "Vector_Id" + b;
+                if (CheckBoxList1.Items[b].Selected)
+                {
+                    Disease_VectorsDataSource.InsertParameters.Add(check1, CheckBoxList1.Items[b].Value);
+                    Disease_VectorsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+                    Disease_VectorsDataSource.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @"+ check1 + ")";
 
-                Disease_VectorsDataSource.InsertParameters.Add("Vector_Id", VectorDropDown.SelectedValue);
-                Disease_VectorsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                Disease_VectorsDataSource.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES("+ Data_Id +", @Vector_Id)";
-
-                Disease_VectorsDataSource.Insert();
-
+                    Disease_VectorsDataSource.Insert();
+                }
+            }
             
       
 
 
+        }
+
+        protected void StrongSymptomsButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddSymptoms.aspx");
         }
     }
 }

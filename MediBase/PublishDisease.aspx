@@ -6,27 +6,178 @@
     <h3>Add a disease to our ever growing database</h3>
     <p>Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts.</p>
 <p>&nbsp;</p>
-    <style>
-        .modelBackground 
+    <style type="text/css">
+        body
         {
-            background-color: black;
-            filter: alpha(opacity=90) !important;
-            opacity: 0.6 !important;
-            z-index: 20;
+            font: 11px "Lucida Grande" , Verdana;
+            cursor: text;
         }
-        .modelpopup
+        ul
         {
-            padding:20px 0px 24px 10px;
-            position:relative;
-            width:759px;
-            height:151px;
-            background-color:white;
-            border:1px solid black;
-            top: 505px;
-            left: 319px;
+            display: block;
         }
-
+        .textboxlist
+        {
+            font: 11px "Lucida Grande" , Verdana;
+            cursor: text;
+            width: 400px;
+        }
+        .textboxlist-ul
+        {
+            overflow: hidden;
+            margin: 0;
+            padding: 3px 4px 0;
+            border: 1px solid #999;
+            padding-bottom: 3px;
+        }
+        .textboxlist-li
+        {
+            list-style-type: none;
+            float: left;
+            display: block;
+            padding: 0;
+            margin: 0 5px 3px 0;
+            cursor: default;
+        }
+        .textboxlist-li-editable
+        {
+            border: 1px solid #fff;
+        }
+        .textboxlist-li-editable-input
+        {
+            border: 0;
+            padding: 2px 0;
+            padding-bottom: 0;
+            height: 14px;
+            font: 11px "Lucida Grande" ,Verdana;
+        }
+        .textboxlist-li-editable-input:focus
+        {
+            outline: 0;
+        }
+        .textboxlist-li-box
+        {
+            position: relative;
+            line-height: 18px;
+            padding: 0 5px;
+            border: 1px solid #CAD8F3;
+            background: #DEE7F8;
+            cursor: default;
+        }
+        .textboxlist-li-box-deletable
+        {
+            padding-right: 15px;
+        }
+        .textboxlist-li-box-deletebutton
+        {
+            position: absolute;
+            right: 4px;
+            top: 6px;
+            display: block;
+            width: 7px;
+            height: 7px;
+            font-size: 1px;
+            background: url(  'close.gif' );
+        }
+        .textboxlist-li-box-deletebutton:hover
+        {
+            border: none;
+            background-position: 7px;
+            text-decoration: none;
+        }
+        .Hiddentextbox
+        {
+            display: none;
+        }
+        div
+        {
+            display: block;
+        }
     </style>
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            var TypeHere = $("input[id$='TypeHere']");
+            var txtValues = $("input[id$='txtValues']");
+            var liTypeHere = $("#liTypeHere");
+            var mydivTextBox = $("#mydivTextBox");
+
+            //Once the user clicks on div, set the focus on input box.
+            mydivTextBox.click(function () {
+                TypeHere.focus();
+            });
+
+           TypeHere.keypress(function (e) {
+                switch (e.keyCode) {
+                    case 188: // ','
+                        // alert('done');
+                        break;
+                    default:
+                        TypeHere.width(TypeHere.width() + 10);
+                }
+            });
+            TypeHere.keyup(function (e) {
+                switch (e.keyCode) {
+                    case 8:  // Backspace
+                        if (TypeHere.width() > 10) {
+                            TypeHere.width(TypeHere.width() - 10);
+                        }
+                        break;
+                    case 188: // ','
+                        var myInputLength = TypeHere.val().length;
+                        var myInputText = TypeHere.val().substring(0, myInputLength - 1); // remove ','
+                        TypeHere.width(myInputLength * 6 + 15);
+                        //Check for email validation.
+                        //You can apply webservices for any type of validation.
+                        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                        if (myInputText.length == 0) {
+                            TypeHere.val('');
+                            return false;
+                        }
+                        if(!emailReg.test(myInputText)) {
+                            alert('Email Is Invalid');
+                            TypeHere.val('');
+                            return false;
+                        }
+                        //Create the list item on fly and apply the css
+                        CreateLi(myInputText)
+                        //Save into Textbox or HiddenField
+                        var strValue = txtValues.val() + myInputText + ';';
+                        txtValues.val(strValue);
+                        //Push the textbox to the right
+                        TypeHere.width(myInputLength * 6 + 15);
+                        //Make the input width to default and set as blank
+                        liTypeHere.css('left', TypeHere.position().left + TypeHere.width() + 10);
+                        TypeHere.val('');
+                        TypeHere.width(10);
+                        break;
+                }
+            });
+
+            function CreateLi(strValue) {
+                var strHTML = $("<li class='textboxlist-li textboxlist-li-box textboxlist-li-box-deletable'>" + strValue + "<a href='#' class='textboxlist-li-box-deletebutton'></a></li>");
+                var size = $("#myListbox > li").size();
+                if (txtValues.val().length == 0) {
+                    $("#myListbox").prepend(strHTML);
+                }
+                else {
+                    $("#myListbox li:nth-child(" + size + ")").before($(strHTML));
+                }
+
+            }
+        });
+        //Adding a click event to a delete button.
+        $("a").live('click', function (e) {
+            e.preventDefault;
+            $(this).parent().remove();
+            //Remove from the textbox of hidden field ...
+            var txtValues = $("input[id$='txtValues']");
+            var strUpdate = txtValues.val();
+            strUpdate = strUpdate.replace($(this).parent().text() + ";", '');
+            txtValues.val(strUpdate);
+
+        });
+    </script>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
     Name of Disease or Illness:
     <asp:TextBox ID="DiseaseNameText" runat="server" Width="282px" BorderColor="White"></asp:TextBox>
@@ -47,6 +198,24 @@
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Symptoms Name:
+        
+    <div>
+        Type the email addresses and press comma (,) to separate the email addresses.
+        <div class="textboxlist" id="mydivTextBox">
+            <ul class="textboxlist-ul" id="myListbox">
+                <li class="textboxlist-li textboxlist-li-editable" style="display: block;" id="liTypeHere">
+                    <input type="text" class="textboxlist-li-editable-input" style="width: 10px;" id="TypeHere"
+                        maxlength="35" />
+                </li>
+            </ul>
+        </div>
+        <br />
+        
+        <div>
+            <asp:TextBox ID="txtValues" runat="server" Width="390px" Visible="True" CssClass ="Hiddentextbox"></asp:TextBox>
+        </div>
+    </div>
+  
     <asp:TextBox ID="WeakSymptomName" runat="server" Width="259px"></asp:TextBox>
         &nbsp;&nbsp;
         <asp:Button ID="SymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" ToolTip="To add a symptom not coming up" />

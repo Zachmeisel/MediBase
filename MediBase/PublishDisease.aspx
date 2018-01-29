@@ -167,7 +167,8 @@
             }
         });
         //Adding a click event to a delete button.
-        $("a").live('click', function (e) {
+        $("a").live('click', function () {
+            alert('Delete clicked');
             e.preventDefault;
             $(this).parent().remove();
             //Remove from the textbox of hidden field ...

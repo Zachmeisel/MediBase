@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <p>&nbsp;</p>
+    <p>&nbsp;&nbsp;</p>
     <h2><%: Title %>Publish Disease</h2>
     <h3>Add a disease to our ever growing database</h3>
     <p>Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts.</p>
@@ -47,11 +47,13 @@
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Symptoms Name:
-    <asp:TextBox ID="WeakSymptomName" runat="server" Width="259px"></asp:TextBox>
+      
+
+    <asp:TextBox ID="WeakSymptomName" runat="server" Width="259px" OnTextChanged="WeakSymptomDescription_TextChanged"></asp:TextBox>
         <br />
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp; Symptoms Description:
-    <asp:TextBox ID="WeakSymptomDescription" runat="server" Width="256px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
+    <asp:TextBox ID="WeakSymptomDescription" runat="server" Width="256px" Columns="1" Height="70px" TextMode="MultiLine" OnTextChanged="WeakSymptomDescription_TextChanged"></asp:TextBox>
         <asp:Button ID="WeakSymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" />
         <p>
             &nbsp;</p>

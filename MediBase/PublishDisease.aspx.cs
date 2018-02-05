@@ -63,31 +63,99 @@ namespace MediBase
             }
             else
             {
-                if (DiseaseNameText.Text == "")
+                
+                 if (DiseaseNameText.Text == "" || DiseaseNameText.Text.Length < 3)
+                 {
+                     DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+                 }
+                else
                 {
-                    DiseaseNameText.BorderColor = System.Drawing.Color.Red;
-                }
-                if (DiseaseDescription.Text == "")
-                {
-                    DiseaseDescription.BorderColor = System.Drawing.Color.Red;
-                }
-                if (DiseasePrognosis.Text == "")
-                {
-                    DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
-                }
-                if (WeakSymptomName.Text == "")
-                {
-                    WeakSymptomName.BorderColor = System.Drawing.Color.Red;
-                }
-                if (WeakSymptomDescription.Text == "")
-                {
-                    WeakSymptomDescription.BorderColor = System.Drawing.Color.Red;
-                }
-                if (Aliases.Text == "")
-                {
-                    Aliases.BorderColor = System.Drawing.Color.Red;
-                }
+                    for (int i = 0; i < DiseaseNameText.Text.Length; i++)
+                    {
+                        if (  DiseaseNameText.Text.ElementAt(i) == ',' || DiseaseNameText.Text.ElementAt(i) == '-' || DiseaseNameText.Text.ElementAt(i) == '+' || DiseaseNameText.Text.ElementAt(i) == '*' || DiseaseNameText.Text.ElementAt(i) == '/')
+                        {
+                            DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+                        }
 
+
+                    }
+                }
+                 if (DiseaseDescription.Text == ""|| DiseaseDescription.Text.Length<3)
+                 {
+                     DiseaseDescription.BorderColor = System.Drawing.Color.Red;
+                 }
+                else
+                {
+                    for (int i = 0; i < DiseaseDescription.Text.Length; i++)
+                    {
+                        if ( DiseaseDescription.Text.ElementAt(i) == '-' || DiseaseDescription.Text.ElementAt(i) == '+' || DiseaseDescription.Text.ElementAt(i) == '*' || DiseaseDescription.Text.ElementAt(i) == '/')
+                        {
+                            DiseaseDescription.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                 if (DiseasePrognosis.Text == ""|| DiseasePrognosis.Text.Length<3)
+                 {
+                     DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
+                 }
+                 else
+                {
+                    for (int i = 0; i < DiseasePrognosis.Text.Length; i++)
+                    {
+                        if ( DiseasePrognosis.Text.ElementAt(i) == ',' || DiseasePrognosis.Text.ElementAt(i) == '-' || DiseasePrognosis.Text.ElementAt(i) == '+' || DiseasePrognosis.Text.ElementAt(i) == '*' || DiseasePrognosis.Text.ElementAt(i) == '/')
+                        {
+                            DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                 if (WeakSymptomName.Text == ""|| WeakSymptomName.Text.Length < 3)
+                 {
+                     WeakSymptomName.BorderColor = System.Drawing.Color.Red;
+                 }
+                else
+                {
+                    for (int i = 0; i < WeakSymptomName.Text.Length; i++)
+                    {
+                        if (  WeakSymptomName.Text.ElementAt(i) == ',' || WeakSymptomName.Text.ElementAt(i) == '-' || WeakSymptomName.Text.ElementAt(i) == '+' || WeakSymptomName.Text.ElementAt(i) == '*' || WeakSymptomName.Text.ElementAt(i) == '/')
+                        {
+                            WeakSymptomName.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                 if (WeakSymptomDescription.Text == ""|| WeakSymptomDescription.Text.Length<3)
+                 {
+                     WeakSymptomDescription.BorderColor = System.Drawing.Color.Red;
+                 }
+                else
+                {
+                    for (int i = 0; i < WeakSymptomDescription.Text.Length; i++)
+                    {
+                        if (  WeakSymptomDescription.Text.ElementAt(i) == ',' || WeakSymptomDescription.Text.ElementAt(i) == '-' || WeakSymptomDescription.Text.ElementAt(i) == '+' || WeakSymptomDescription.Text.ElementAt(i) == '*' || WeakSymptomDescription.Text.ElementAt(i) == '/')
+                        {
+                            WeakSymptomDescription.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                 if (Aliases.Text == "" || Aliases.Text.Length<3)
+                 {
+                     Aliases.BorderColor = System.Drawing.Color.Red;
+                 }
+                else
+                {
+                    for (int i = 0; i < Aliases.Text.Length; i++)
+                    {
+
+                        if (  Aliases.Text.ElementAt(i) == ',' || Aliases.Text.ElementAt(i) == '-' || Aliases.Text.ElementAt(i) == '+' || Aliases.Text.ElementAt(i) == '*' || Aliases.Text.ElementAt(i) == '/')
+                        {
+                            Aliases.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+              
+               
+              
+               
+                  
             }
             
         }
@@ -126,6 +194,18 @@ namespace MediBase
       
 
 
+        }
+
+        protected void WeakSymptomDescription_TextChanged(object sender, EventArgs e)
+        {
+           /* //  ListItem tb = new ListItem();
+            char s = WeakSymptomName.Text[WeakSymptomName.Text.Length - 1];
+            if (s==',')
+            {
+                ListItem tb = new ListItem();
+                tb.Text = WeakSymptomName.Text;
+            }
+          */
         }
     }
 }

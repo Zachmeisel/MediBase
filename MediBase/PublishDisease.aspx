@@ -127,18 +127,7 @@
                         var myInputLength = TypeHere.val().length;
                         var myInputText = TypeHere.val().substring(0, myInputLength - 1); // remove ','
                         TypeHere.width(myInputLength * 6 + 15);
-                        //Check for email validation.
-                        //You can apply webservices for any type of validation.
-                        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                        if (myInputText.length == 0) {
-                            TypeHere.val('');
-                            return false;
-                        }
-                        if(!emailReg.test(myInputText)) {
-                            alert('Email Is Invalid');
-                            TypeHere.val('');
-                            return false;
-                        }
+
                         //Create the list item on fly and apply the css
                         CreateLi(myInputText)
                         //Save into Textbox or HiddenField
@@ -154,30 +143,25 @@
                 }
             });
 
-            function CreateLi(strValue) {
-                var strHTML = $("<li class='textboxlist-li textboxlist-li-box textboxlist-li-box-deletable'>" + strValue + "<a href='#' class='textboxlist-li-box-deletebutton'></a></li>");
-                var size = $("#myListbox > li").size();
-                if (txtValues.val().length == 0) {
-                    $("#myListbox").prepend(strHTML);
-                }
-                else {
-                    $("#myListbox li:nth-child(" + size + ")").before($(strHTML));
-                }
+            function CreateLi(strValue) {              
+                var li = document.createElement('li');
+                li.className = 'textboxlist-li textboxlist-li-box textboxlist-li-box-deletable';
+                li.innerHTML = strValue;
+
+                var butt = document.createElement('a');
+                butt.className = 'textboxlist-li-box-deletebutton';
+                butt.onclick = removeSymptom;
+                li.appendChild(butt);
+                document.getElementById('myListbox').appendChild(li);
 
             }
         });
-        //Adding a click event to a delete button.
-        $("a").live('click', function () {
-            alert('Delete clicked');
-            e.preventDefault;
-            $(this).parent().remove();
-            //Remove from the textbox of hidden field ...
-            var txtValues = $("input[id$='txtValues']");
-            var strUpdate = txtValues.val();
-            strUpdate = strUpdate.replace($(this).parent().text() + ";", '');
-            txtValues.val(strUpdate);
 
-        });
+        function removeSymptom() {
+            alert('Delete clicked');
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+
     </script>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
     Name of Disease or Illness:

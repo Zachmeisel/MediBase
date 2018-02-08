@@ -28,14 +28,21 @@
 
     </style>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
+
+    </div>
+    <div style="margin-left: auto; margin-right: auto; text-align: center;">
     Name of Disease or Illness:
     <asp:TextBox ID="DiseaseNameText" runat="server" Width="282px" BorderColor="White"></asp:TextBox>
+        
         <br />
+         <b ID="disease_name" style="display:none">display:none</b>
         <br />
         Disease Description:
     <asp:TextBox ID="DiseaseDescription" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
         <asp:Button ID="DiseaseDescriptionButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" Visible="False" />
+        <b id="disease_describe" style="display:none">asasasas</b>
         <p>&nbsp;</p>
+        
         <p>&nbsp;&nbsp;&nbsp;&nbsp; Prognosis:
     <asp:TextBox ID="DiseasePrognosis" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
         </p>

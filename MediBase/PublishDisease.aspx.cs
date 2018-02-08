@@ -75,6 +75,8 @@ namespace MediBase
                         if (  DiseaseNameText.Text.ElementAt(i) == ',' || DiseaseNameText.Text.ElementAt(i) == '-' || DiseaseNameText.Text.ElementAt(i) == '+' || DiseaseNameText.Text.ElementAt(i) == '*' || DiseaseNameText.Text.ElementAt(i) == '/')
                         {
                             DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+                            
+                           // var control = document.getElementById(controlId);
                         }
 
 

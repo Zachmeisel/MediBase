@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data.SqlClient;
 namespace MediBase
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         //   DiseaseDataSource.InsertCommand
-         //   
+            //   DiseaseDataSource.InsertCommand
+            //   
         }
         //TODO Delete me
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
@@ -22,12 +22,12 @@ namespace MediBase
 
         //protected void StrongSymptomsButton_Click(object sender, EventArgs e)
         //{
-            //SymptomsDataSource.InsertParameters.Add("Name", StrongSymptomName.Text);
-            //SymptomsDataSource.InsertParameters.Add("Description", StrongSymptomDescription.Text);
-            //SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-            //SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name, Description) VALUES(@Name, @Description)";
+        //SymptomsDataSource.InsertParameters.Add("Name", StrongSymptomName.Text);
+        //SymptomsDataSource.InsertParameters.Add("Description", StrongSymptomDescription.Text);
+        //SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+        //SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name, Description) VALUES(@Name, @Description)";
 
-            //SymptomsDataSource.Insert();
+        //SymptomsDataSource.Insert();
 
         //}
 
@@ -57,7 +57,7 @@ namespace MediBase
                 DiseaseDataSource.InsertParameters.Add("Phenotype_Id", PathogenDropDown.SelectedValue);
                 // DiseaseDataSource.InsertParameters.Add("DiseaseId", DiseaseNameText.Text);
                 DiseaseDataSource.InsertParameters.Add("DiseaseId", "");
-                
+
 
                 DiseaseDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
                 DiseaseDataSource.InsertCommand = "INSERT INTO Diseases(Name, Description, Prognosis, Phenotype_Id) VALUES(@Name, @Description, @Prognosis, @Phenotype_Id) SET @IdReturn=SCOPE_IDENTITY();";
@@ -72,6 +72,10 @@ namespace MediBase
             }
             else
             {
+
+                string txt2 = txtValues.Text;
+                string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
                 if (DiseaseNameText.Text == "")
                 {
                     DiseaseNameText.BorderColor = System.Drawing.Color.Red;
@@ -94,32 +98,32 @@ namespace MediBase
                 }
 
 
-                }
-            
+            }
+
         }
         protected void DiseaseDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
             string Data_Id = e.Command.Parameters["@IdReturn"].Value.ToString();
             
-                SymptomsDataSource.InsertParameters.Add("SymptomName", WeakSymptomName.Text);
-                SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name) VALUES(@SymptomName)";
+            SymptomsDataSource.InsertParameters.Add("SymptomName", WeakSymptomName.Text);
+            SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+            SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name) VALUES(@SymptomName)";
 
-                SymptomsDataSource.Insert();
+            SymptomsDataSource.Insert();
 
-                string txt = Aliases.Text;
-                string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            string txt = Aliases.Text;
+            string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
-                //int a = lst.Length;
+            //int a = lst.Length;
 
-                for(int a = 0; a < lst.Length; a++)
-                {
+            for (int a = 0; a < lst.Length; a++)
+            {
                 string check = "AliasName" + a;
-                    AliasesDataSource.InsertParameters.Add(check, lst[a]);
-                    AliasesDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                    AliasesDataSource.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@"+check+", " + Data_Id + ")";
-                    AliasesDataSource.Insert();
-                }
+                AliasesDataSource.InsertParameters.Add(check, lst[a]);
+                AliasesDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+                AliasesDataSource.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@" + check + ", " + Data_Id + ")";
+                AliasesDataSource.Insert();
+            }
             CheckBoxList chkbx = (CheckBoxList)FindControl("CheckBoxList1");
             for (int b = 0; b < 5; b++)
             {
@@ -128,13 +132,13 @@ namespace MediBase
                 {
                     Disease_VectorsDataSource.InsertParameters.Add(check1, CheckBoxList1.Items[b].Value);
                     Disease_VectorsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                    Disease_VectorsDataSource.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @"+ check1 + ")";
+                    Disease_VectorsDataSource.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @" + check1 + ")";
 
                     Disease_VectorsDataSource.Insert();
                 }
             }
-            
-      
+
+
 
 
         }
@@ -142,6 +146,13 @@ namespace MediBase
         protected void StrongSymptomsButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddSymptoms.aspx");
+        }
+        protected bool SympCheck(string []arr)
+        {
+            string name;
+
+           // SymptomsDataSource.SelectParameters{ name};
+            return true;
         }
     }
 }

@@ -21,6 +21,7 @@
             font: 11px "Lucida Grande" , Verdana;
             cursor: text;
             width: 400px;
+            margin-left: 380px;
         }
         .textboxlist-ul
         {
@@ -94,6 +95,7 @@
             display: block;
         }
     </style>
+     <script src="Scripts/jquery-1.7.1.min.js"></script>  
     <script language="javascript" type="text/javascript">
 
         $(document).ready(function () {
@@ -127,14 +129,17 @@
                         var myInputLength = TypeHere.val().length;
                         var myInputText = TypeHere.val().substring(0, myInputLength - 1); // remove ','
                         TypeHere.width(myInputLength * 6 + 15);
+                       
 
+     
+                        
                         //Create the list item on fly and apply the css
                         CreateLi(myInputText)
                         //Save into Textbox or HiddenField
                         var strValue = txtValues.val() + myInputText + ';';
                         txtValues.val(strValue);
                         //Push the textbox to the right
-                        TypeHere.width(myInputLength * 6 + 15);
+                        TypeHere.width(myInputLength + 15);
                         //Make the input width to default and set as blank
                         liTypeHere.css('left', TypeHere.position().left + TypeHere.width() + 10);
                         TypeHere.val('');
@@ -158,7 +163,7 @@
         });
 
         function removeSymptom() {
-            alert('Delete clicked');
+            //alert('Delete clicked');
             this.parentNode.parentNode.removeChild(this.parentNode);
         }
 
@@ -183,13 +188,12 @@
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Symptoms Name:
-        
+       <div id="feedback"></div> 
     <div>
-        Type the email addresses and press comma (,) to separate the email addresses.
         <div class="textboxlist" id="mydivTextBox">
             <ul class="textboxlist-ul" id="myListbox">
                 <li class="textboxlist-li textboxlist-li-editable" style="display: block;" id="liTypeHere">
-                    <input type="text" class="textboxlist-li-editable-input" style="width: 10px;" id="TypeHere"
+                    <input type="text" class="textboxlist-li-editable-input" style="width: 10px;" ID="TypeHere"
                         maxlength="35" />
                 </li>
             </ul>

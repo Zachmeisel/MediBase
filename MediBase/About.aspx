@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="MediBase.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+     
     <p>&nbsp;</p>
     <h2><%: Title %>About MediBase</h2>
     <h3>Medical Database program description</h3>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="MediBase.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <p>&nbsp;</p>
     <h2><%: Title %>Contact</h2>
     <h3>Your contact page.</h3>

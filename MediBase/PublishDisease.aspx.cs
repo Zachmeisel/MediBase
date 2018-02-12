@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Configuration;
+
 namespace MediBase
 {
     public partial class WebForm1 : System.Web.UI.Page
@@ -36,7 +38,6 @@ namespace MediBase
             DiseaseNameText.BorderColor = System.Drawing.Color.White;
             DiseaseDescription.BorderColor = System.Drawing.Color.White;
             DiseasePrognosis.BorderColor = System.Drawing.Color.White;
-            WeakSymptomName.BorderColor = System.Drawing.Color.White;
             Aliases.BorderColor = System.Drawing.Color.White;
 
             int count = 0;
@@ -47,9 +48,10 @@ namespace MediBase
                     count++;
                 }
             }
+            string txt2 = txtValues.Text;
+            string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && WeakSymptomName.Text != ""
-                && Aliases.Text != "" && count != 0)
+            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && Aliases.Text != "" && count != 0 && SympCheck(newlist) ==true)
             {
                 DiseaseDataSource.InsertParameters.Add("Name", DiseaseNameText.Text);
                 DiseaseDataSource.InsertParameters.Add("Description", DiseaseDescription.Text);
@@ -66,15 +68,19 @@ namespace MediBase
                 DiseaseNameText.Text = "";
                 DiseaseDescription.Text = "";
                 DiseasePrognosis.Text = "";
-                WeakSymptomName.Text = "";
                 Aliases.Text = "";
                 CheckBoxList1.ClearSelection();
             }
             else
             {
+               if( SympCheck(newlist) == false)
+                {
+                    string myStringVariable = "Symptoms not found in Database";
+                    txtValues.Text = "";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + myStringVariable + "');", true);
+                }
 
-                string txt2 = txtValues.Text;
-                string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
 
                 if (DiseaseNameText.Text == "")
                 {
@@ -88,10 +94,6 @@ namespace MediBase
                 {
                     DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
                 }
-                if (WeakSymptomName.Text == "")
-                {
-                    WeakSymptomName.BorderColor = System.Drawing.Color.Red;
-                }
                 if (Aliases.Text == "")
                 {
                     Aliases.BorderColor = System.Drawing.Color.Red;
@@ -104,13 +106,37 @@ namespace MediBase
         protected void DiseaseDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
             string Data_Id = e.Command.Parameters["@IdReturn"].Value.ToString();
-            
-            SymptomsDataSource.InsertParameters.Add("SymptomName", WeakSymptomName.Text);
-            SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-            SymptomsDataSource.InsertCommand = "INSERT INTO Symptoms(Name) VALUES(@SymptomName)";
 
-            SymptomsDataSource.Insert();
+            string txt2 = txtValues.Text;
+            string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] IdSstring;
+            System.Data.DataTable dt = new System.Data.DataTable();
+            string bush = string.Empty;
 
+            for (int g = 0; g < newlist.Length; g++)
+            {
+                //SymptomsDataSource.SelectCommandType = SqlDataSourceCommandType.Text;
+                //SymptomsDataSource.SelectCommand = "SELECT [Id] FROM [Symptoms] WHERE ([Name] = @" + newlist[g] + ")";
+                //SymptomsDataSource.SelectParameters.Clear();
+                //SymptomsDataSource.SelectParameters.Add("Id", bush);
+                //SymptomsDataSource.
+                //SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+                //SqlCommand command = new SqlCommand("SELECT Id FROM Symptoms", connection);
+                //connection.Open();
+                //SqlDataReader reader = command.ExecuteReader();
+                //reader.Read();
+                //bush = reader[0].ToString();
+
+            }
+            for (int q = 0; q < txt2.Length; q++)
+            {
+               string Sym_Check = "Symp" + q;
+                Disease_SymptomsDataSource.InsertParameters.Add(Sym_Check, newlist[q]);
+                Disease_SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+                Disease_SymptomsDataSource.InsertCommand = "INSERT INTO Disease_Symptoms(Disease_Id, Symptom_Id) VALUES(" + Data_Id + ", @" + Sym_Check + ")";
+
+                Disease_SymptomsDataSource.Insert();
+            }           
             string txt = Aliases.Text;
             string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -149,10 +175,30 @@ namespace MediBase
         }
         protected bool SympCheck(string []arr)
         {
-            string name;
-
-           // SymptomsDataSource.SelectParameters{ name};
+            
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+            conn.Open();
+            //System.Data.DataTable dt = new System.Data.DataTable();
+           
+            for (int a = 0; a < arr.Length; a++)
+            {
+                System.Data.DataTable dt = new System.Data.DataTable();
+                SqlCommand check_User_Name = new SqlCommand("SELECT * FROM Symptoms WHERE ([Name] = @SName)",conn);
+                check_User_Name.Parameters.AddWithValue("@SName", arr[a]);
+                SqlDataAdapter ad = new SqlDataAdapter(check_User_Name);
+                ad.Fill(dt);
+                if (dt.Rows.Count == 0)
+                {
+                    return false;
+                }
+            }
+            // SymptomsDataSource.SelectParameters{ name};
             return true;
+        }
+
+        protected void SymptomsDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
         }
     }
 }

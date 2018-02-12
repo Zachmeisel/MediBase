@@ -51,7 +51,7 @@ namespace MediBase
             string txt2 = txtValues.Text;
             string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && Aliases.Text != "" && count != 0 && SympCheck(newlist) ==true)
+            if (DiseaseNameText.Text != "" && DiseaseDescription.Text != "" && DiseasePrognosis.Text != "" && Aliases.Text != "" && count != 0 && SympCheck(newlist) ==true && AllCheck()==true)
             {
                 DiseaseDataSource.InsertParameters.Add("Name", DiseaseNameText.Text);
                 DiseaseDataSource.InsertParameters.Add("Description", DiseaseDescription.Text);
@@ -82,67 +82,7 @@ namespace MediBase
 
 
 
-                if (DiseaseNameText.Text == "" || DiseaseNameText.Text.Length < 3)
-                {
-                    DiseaseNameText.BorderColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    for (int i = 0; i < DiseaseNameText.Text.Length; i++)
-                    {
-                        if (DiseaseNameText.Text.ElementAt(i) == ',' || DiseaseNameText.Text.ElementAt(i) == '-' || DiseaseNameText.Text.ElementAt(i) == '+' || DiseaseNameText.Text.ElementAt(i) == '*' || DiseaseNameText.Text.ElementAt(i) == '/')
-                        {
-                            DiseaseNameText.BorderColor = System.Drawing.Color.Red;
-
-                            // var control = document.getElementById(controlId);
-                        }
-
-
-                    }
-                }
-                if (DiseaseDescription.Text == "" || DiseaseDescription.Text.Length < 3)
-                {
-                    DiseaseDescription.BorderColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    for (int i = 0; i < DiseaseDescription.Text.Length; i++)
-                    {
-                        if (DiseaseDescription.Text.ElementAt(i) == '-' || DiseaseDescription.Text.ElementAt(i) == '+' || DiseaseDescription.Text.ElementAt(i) == '*' || DiseaseDescription.Text.ElementAt(i) == '/')
-                        {
-                            DiseaseDescription.BorderColor = System.Drawing.Color.Red;
-                        }
-                    }
-                }
-                if (DiseasePrognosis.Text == "" || DiseasePrognosis.Text.Length < 3)
-                {
-                    DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    for (int i = 0; i < DiseasePrognosis.Text.Length; i++)
-                    {
-                        if (DiseasePrognosis.Text.ElementAt(i) == ',' || DiseasePrognosis.Text.ElementAt(i) == '-' || DiseasePrognosis.Text.ElementAt(i) == '+' || DiseasePrognosis.Text.ElementAt(i) == '*' || DiseasePrognosis.Text.ElementAt(i) == '/')
-                        {
-                            DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
-                        }
-                    }
-                }
-                if (Aliases.Text == "" || Aliases.Text.Length < 3)
-                {
-                    Aliases.BorderColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    for (int i = 0; i < Aliases.Text.Length; i++)
-                    {
-
-                        if (Aliases.Text.ElementAt(i) == ',' || Aliases.Text.ElementAt(i) == '-' || Aliases.Text.ElementAt(i) == '+' || Aliases.Text.ElementAt(i) == '*' || Aliases.Text.ElementAt(i) == '/')
-                        {
-                            Aliases.BorderColor = System.Drawing.Color.Red;
-                        }
-                    }
-                }
+                
 
 
             }
@@ -245,5 +185,79 @@ namespace MediBase
         {
 
         }
+        protected bool AllCheck()
+        {
+            if (DiseaseNameText.Text == "" || DiseaseNameText.Text.Length < 3)
+            {
+                DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < DiseaseNameText.Text.Length; i++)
+                {
+                    if (DiseaseNameText.Text.ElementAt(i) == ',' || DiseaseNameText.Text.ElementAt(i) == '-' || DiseaseNameText.Text.ElementAt(i) == '+' || DiseaseNameText.Text.ElementAt(i) == '*' || DiseaseNameText.Text.ElementAt(i) == '/')
+                    {
+                        DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+                        return false;
+
+                        // var control = document.getElementById(controlId);
+                    }
+
+
+                }
+            }
+            if (DiseaseDescription.Text == "" || DiseaseDescription.Text.Length < 3)
+            {
+                DiseaseDescription.BorderColor = System.Drawing.Color.Red;
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < DiseaseDescription.Text.Length; i++)
+                {
+                    if (DiseaseDescription.Text.ElementAt(i) == '-' || DiseaseDescription.Text.ElementAt(i) == '+' || DiseaseDescription.Text.ElementAt(i) == '*' || DiseaseDescription.Text.ElementAt(i) == '/')
+                    {
+                        DiseaseDescription.BorderColor = System.Drawing.Color.Red;
+                        return false;
+                    }
+                }
+            }
+            if (DiseasePrognosis.Text == "" || DiseasePrognosis.Text.Length < 3)
+            {
+                DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < DiseasePrognosis.Text.Length; i++)
+                {
+                    if (DiseasePrognosis.Text.ElementAt(i) == ',' || DiseasePrognosis.Text.ElementAt(i) == '-' || DiseasePrognosis.Text.ElementAt(i) == '+' || DiseasePrognosis.Text.ElementAt(i) == '*' || DiseasePrognosis.Text.ElementAt(i) == '/')
+                    {
+                        DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
+                        return false;
+                    }
+                }
+            }
+            if (Aliases.Text == "" || Aliases.Text.Length < 3)
+            {
+                Aliases.BorderColor = System.Drawing.Color.Red;
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < Aliases.Text.Length; i++)
+                {
+
+                    if (Aliases.Text.ElementAt(i) == ',' || Aliases.Text.ElementAt(i) == '-' || Aliases.Text.ElementAt(i) == '+' || Aliases.Text.ElementAt(i) == '*' || Aliases.Text.ElementAt(i) == '/')
+                    {
+                        Aliases.BorderColor = System.Drawing.Color.Red;
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
-}
+    
+    }

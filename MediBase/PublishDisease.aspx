@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <p>&nbsp;</p>
     <h2><%: Title %>Publish Disease</h2>
     <h3>Add a disease to our ever growing database</h3>

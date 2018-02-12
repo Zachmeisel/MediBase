@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MediBase._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
 
     <div class="jumbotron">
         <h1>MediBase</h1>

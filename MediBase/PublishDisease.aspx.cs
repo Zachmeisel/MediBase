@@ -82,21 +82,66 @@ namespace MediBase
 
 
 
-                if (DiseaseNameText.Text == "")
+                if (DiseaseNameText.Text == "" || DiseaseNameText.Text.Length < 3)
                 {
                     DiseaseNameText.BorderColor = System.Drawing.Color.Red;
                 }
-                if (DiseaseDescription.Text == "")
+                else
+                {
+                    for (int i = 0; i < DiseaseNameText.Text.Length; i++)
+                    {
+                        if (DiseaseNameText.Text.ElementAt(i) == ',' || DiseaseNameText.Text.ElementAt(i) == '-' || DiseaseNameText.Text.ElementAt(i) == '+' || DiseaseNameText.Text.ElementAt(i) == '*' || DiseaseNameText.Text.ElementAt(i) == '/')
+                        {
+                            DiseaseNameText.BorderColor = System.Drawing.Color.Red;
+
+                            // var control = document.getElementById(controlId);
+                        }
+
+
+                    }
+                }
+                if (DiseaseDescription.Text == "" || DiseaseDescription.Text.Length < 3)
                 {
                     DiseaseDescription.BorderColor = System.Drawing.Color.Red;
                 }
-                if (DiseasePrognosis.Text == "")
+                else
+                {
+                    for (int i = 0; i < DiseaseDescription.Text.Length; i++)
+                    {
+                        if (DiseaseDescription.Text.ElementAt(i) == '-' || DiseaseDescription.Text.ElementAt(i) == '+' || DiseaseDescription.Text.ElementAt(i) == '*' || DiseaseDescription.Text.ElementAt(i) == '/')
+                        {
+                            DiseaseDescription.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                if (DiseasePrognosis.Text == "" || DiseasePrognosis.Text.Length < 3)
                 {
                     DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
                 }
-                if (Aliases.Text == "")
+                else
+                {
+                    for (int i = 0; i < DiseasePrognosis.Text.Length; i++)
+                    {
+                        if (DiseasePrognosis.Text.ElementAt(i) == ',' || DiseasePrognosis.Text.ElementAt(i) == '-' || DiseasePrognosis.Text.ElementAt(i) == '+' || DiseasePrognosis.Text.ElementAt(i) == '*' || DiseasePrognosis.Text.ElementAt(i) == '/')
+                        {
+                            DiseasePrognosis.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+                if (Aliases.Text == "" || Aliases.Text.Length < 3)
                 {
                     Aliases.BorderColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    for (int i = 0; i < Aliases.Text.Length; i++)
+                    {
+
+                        if (Aliases.Text.ElementAt(i) == ',' || Aliases.Text.ElementAt(i) == '-' || Aliases.Text.ElementAt(i) == '+' || Aliases.Text.ElementAt(i) == '*' || Aliases.Text.ElementAt(i) == '/')
+                        {
+                            Aliases.BorderColor = System.Drawing.Color.Red;
+                        }
+                    }
                 }
 
 
@@ -128,15 +173,15 @@ namespace MediBase
                 //bush = reader[0].ToString();
 
             }
-            for (int q = 0; q < txt2.Length; q++)
-            {
-               string Sym_Check = "Symp" + q;
-                Disease_SymptomsDataSource.InsertParameters.Add(Sym_Check, newlist[q]);
-                Disease_SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-                Disease_SymptomsDataSource.InsertCommand = "INSERT INTO Disease_Symptoms(Disease_Id, Symptom_Id) VALUES(" + Data_Id + ", @" + Sym_Check + ")";
+            //for (int q = 0; q < txt2.Length; q++)
+            //{
+            //   string Sym_Check = "Symp" + q;
+            //    Disease_SymptomsDataSource.InsertParameters.Add(Sym_Check, newlist[q]);
+            //    Disease_SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+            //    Disease_SymptomsDataSource.InsertCommand = "INSERT INTO Disease_Symptoms(Disease_Id, Symptom_Id) VALUES(" + Data_Id + ", @" + Sym_Check + ")";
 
-                Disease_SymptomsDataSource.Insert();
-            }           
+            //    Disease_SymptomsDataSource.Insert();
+            //}           
             string txt = Aliases.Text;
             string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 

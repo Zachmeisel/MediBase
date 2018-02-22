@@ -12,6 +12,7 @@
         {
             font: 11px "Lucida Grande" , Verdana;
             cursor: text;
+            background: #404040;
         }
         ul
         {
@@ -23,6 +24,7 @@
             cursor: text;
             width: 400px;
             margin-left: 380px;
+            background: #FFFFFF;
         }
         .textboxlist-ul
         {
@@ -40,10 +42,12 @@
             padding: 0;
             margin: 0 5px 3px 0;
             cursor: default;
+            background: #FFFFFF;
         }
         .textboxlist-li-editable
         {
             border: 1px solid #fff;
+            background: #FFFFFF;
         }
         .textboxlist-li-editable-input
         {
@@ -65,6 +69,7 @@
             border: 1px solid #CAD8F3;
             background: #DEE7F8;
             cursor: default;
+            float: right;
         }
         .textboxlist-li-box-deletable
         {

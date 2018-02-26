@@ -59,7 +59,6 @@
 			</asp:TemplateField>
 			<asp:BoundField DataField="PhenotypeName" HeaderText="Phenotype" />
 			<asp:BoundField DataField="PhenotypeDescription" HeaderText="Phenotype Description" />
-		    <asp:HyperLinkField NavigateUrl="~/Edit" Text="Edit" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Edit?NewId={0}" />
 		</Columns>
 		<emptydatatemplate>
 			No Diseases Matching Search Terms. Try broadening your search.

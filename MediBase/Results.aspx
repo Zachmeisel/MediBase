@@ -8,7 +8,7 @@
 	<br />
 	&nbsp;<asp:TextBox ID="NameSearchTextBox" runat="server" Width="320px"></asp:TextBox>
 	<asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" />
-	<asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="ResultsDataSource" AllowPaging="True" OnRowDataBound="ResultsGridView_RowDataBound">
+	<asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="ResultsDataSource" AllowPaging="True" OnRowDataBound="ResultsGridView_RowDataBound" OnSelectedIndexChanged="ResultsGridView_SelectedIndexChanged">
 		<Columns>
 			<asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" Visible="True" />
 			<asp:BoundField DataField="DiseaseName" HeaderText="Name" SortExpression="Name" />
@@ -59,6 +59,7 @@
 			</asp:TemplateField>
 			<asp:BoundField DataField="PhenotypeName" HeaderText="Phenotype" />
 			<asp:BoundField DataField="PhenotypeDescription" HeaderText="Phenotype Description" />
+		    <asp:HyperLinkField Text="Edit" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Edit_Disease.aspx?boosh={0}" />
 		</Columns>
 		<emptydatatemplate>
 			No Diseases Matching Search Terms. Try broadening your search.

@@ -53,5 +53,10 @@ namespace MediBase
 				a.SelectParameters[0].DefaultValue = e.Row.Cells[0].Text;
 			}
 		}
-	}
+
+        protected void ResultsGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

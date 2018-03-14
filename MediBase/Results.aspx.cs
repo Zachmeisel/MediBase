@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,18 +25,47 @@ namespace MediBase
 
 		protected void SearchButton_Click(object sender, EventArgs e)
 		{
-			//TODO: split search field on spaces, add symptom searching, add boolean searching, may need to use different search method (not parameters)
+			//TODO: create Fulltext Indexes of Columns in Diseases, Aliases, Symptoms tables
+
+			List<string> searchParameters = parseSearchTerms(NameSearchTextBox.Text);
+
+			string parameterString = "\"" + searchParameters[0] + "\"";
+
+			for(int i = 1; i < searchParameters.Count; i++)
+			{
+				parameterString += " AND \"" + searchParameters[i] + "\"";
+			}
 
 			ResultsDataSource.SelectParameters.Clear();
-			ResultsDataSource.SelectParameters.Add(new Parameter("DiseaseName", System.Data.DbType.String, NameSearchTextBox.Text));
+
+			string selectCommand = "SELECT [Diseases].Id, [Diseases].[Name] AS DiseaseName, [Diseases].[Description] AS DiseaseDescription, [Phenotype].[Name] AS PhenotypeName, [Phenotype].[Description] AS PhenotypeDescription FROM [Diseases] LEFT JOIN [Aliases] ON [Aliases].Disease_Id = [Diseases].Id LEFT JOIN [Phenotype] ON [Phenotype].Id = [Diseases].Phenotype_Id LEFT JOIN [Disease_Symptoms] ON [Disease_Symptoms].Disease_Id = [Diseases].Id LEFT JOIN [Symptoms] ON [Symptoms].Id = [Disease_Symptoms].Symptom.Id WHERE CONTAINS(([Aliases].[Name], [Diseases].[Name], [Symptoms].Name), '" + parameterString + "' ORDER BY DiseaseName ASC;";
+
+			for (int i = 0; i < searchParameters.Count; i++)
+			{
+				selectCommand += searchParameters[i];
+
+				if(i < searchParameters.Count - 1)		// if this is not the last parameter
+				{
+					selectCommand += ", ";
+				}
+				else
+				{
+					selectCommand += ");";
+				}
+			}
+
+			ResultsDataSource.SelectCommand = selectCommand;
+
 			ResultsDataSource.Select(DataSourceSelectArguments.Empty);
 			ResultsDataSource.DataBind();
 			ResultsGridView.DataBind();
 		}
 
-		protected void ItemSelected(object sender, EventArgs e)
+		private List<string> parseSearchTerms(string parametersString)
 		{
-			//TODO: delete me gracefully
+			List<string> searchParameters = Regex.Matches(parametersString, @"[\""].+?[\""]|[^ ]+").Cast<Match>().Select(m => m.Value).ToList();
+
+			return searchParameters;
 		}
 
 		protected void ResultsGridView_RowDataBound(object sender, GridViewRowEventArgs e)

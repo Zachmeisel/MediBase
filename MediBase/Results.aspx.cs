@@ -38,21 +38,21 @@ namespace MediBase
 
 			ResultsDataSource.SelectParameters.Clear();
 
-			string selectCommand = "SELECT [Diseases].Id, [Diseases].[Name] AS DiseaseName, [Diseases].[Description] AS DiseaseDescription, [Phenotype].[Name] AS PhenotypeName, [Phenotype].[Description] AS PhenotypeDescription FROM [Diseases] LEFT JOIN [Aliases] ON [Aliases].Disease_Id = [Diseases].Id LEFT JOIN [Phenotype] ON [Phenotype].Id = [Diseases].Phenotype_Id LEFT JOIN [Disease_Symptoms] ON [Disease_Symptoms].Disease_Id = [Diseases].Id LEFT JOIN [Symptoms] ON [Symptoms].Id = [Disease_Symptoms].Symptom.Id WHERE CONTAINS(([Aliases].[Name], [Diseases].[Name], [Symptoms].Name), '" + parameterString + "' ORDER BY DiseaseName ASC;";
+			string selectCommand = "SELECT [Diseases].Id, [Diseases].[Name] AS DiseaseName, [Diseases].[Description] AS DiseaseDescription, [Phenotype].[Name] AS PhenotypeName, [Phenotype].[Description] AS PhenotypeDescription FROM [Diseases] LEFT JOIN [Aliases] ON [Aliases].Disease_Id = [Diseases].Id LEFT JOIN [Phenotype] ON [Phenotype].Id = [Diseases].Phenotype_Id LEFT JOIN [Disease_Symptoms] ON [Disease_Symptoms].Disease_Id = [Diseases].Id LEFT JOIN [Symptoms] ON [Symptoms].Id = [Disease_Symptoms].Symptom_Id WHERE (CONTAINS([Aliases].[Name], '" + parameterString + "') OR CONTAINS([Diseases].[Name], '" + parameterString + "') OR CONTAINS([Symptoms].Name,'" + parameterString + "')) ORDER BY DiseaseName ASC;";
 
-			for (int i = 0; i < searchParameters.Count; i++)
-			{
-				selectCommand += searchParameters[i];
+			//for (int i = 0; i < searchParameters.Count; i++)
+			//{
+			//	selectCommand += searchParameters[i];
 
-				if(i < searchParameters.Count - 1)		// if this is not the last parameter
-				{
-					selectCommand += ", ";
-				}
-				else
-				{
-					selectCommand += ");";
-				}
-			}
+			//	if(i < searchParameters.Count - 1)		// if this is not the last parameter
+			//	{
+			//		selectCommand += ", ";
+			//	}
+			//	else
+			//	{
+			//		selectCommand += ");";
+			//	}
+			//}
 
 			ResultsDataSource.SelectCommand = selectCommand;
 

@@ -175,6 +175,8 @@
         <span style="font-size: xx-large">Edit Disease</span><br />
     </p>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
+        <asp:Label ID="Label1" runat="server" Text="Disease Updated" BackColor="#000066" BorderColor="#0000CC" ForeColor="White" Visible="False"></asp:Label>
+        <br />
     <p>
         Disease Name:
         <asp:TextBox ID="TextBox2" runat="server" Width="178px"></asp:TextBox>
@@ -226,10 +228,14 @@
     
     <p>
         Vectors:<asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px">
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="27px" Width="140px">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px">
             </asp:CheckBoxList>
         </asp:Panel>
+        <br />
+        <br />
+        <br />
         <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />
+        <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Vectors]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="DiseaseDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" OnUpdated="DiseaseDataSource_Inserted" SelectCommand="SELECT * FROM [Diseases]"></asp:SqlDataSource>
         </p>

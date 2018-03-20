@@ -31,7 +31,7 @@ namespace MediBase
             
             
             sqlDa.Fill(dt);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && TextBox2.Text == "" && TextBox3.Text == "" && TextBox4.Text == ""  )
             {
                 TextBox2.Text = dt.Rows[0]["Name"].ToString();
                 TextBox3.Text = dt.Rows[0]["Description"].ToString();
@@ -64,7 +64,7 @@ namespace MediBase
 
             sqlDa2.Fill(dt2);
 
-            if (dt2.Rows.Count > 0)
+            if (dt2.Rows.Count > 0 && TextBox5.Text == "")
             {
                 for (int r = 0; r < dt2.Rows.Count; r++)
                 {
@@ -79,22 +79,24 @@ namespace MediBase
             SqlCommand sqlCmd3 = new SqlCommand("SELECT * from Disease_Vectors WHERE Disease_Id = " + s + "", connection);
             sqlCmd3.Parameters.AddWithValue("@username", user);
             SqlDataAdapter sqlDa3 = new SqlDataAdapter(sqlCmd3);
-
+            
 
             sqlDa3.Fill(dt3);
-            if (dt3.Rows.Count > 0)
-            {
-                for (int e = 0; e < dt3.Rows.Count; e++)
-                {
-                    CheckBoxList1.SelectedValue = dt3.Rows[e]["Vector_Id"].ToString();
-                }
-            }
+           
+            //if (dt3.Rows.Count > 0 && CheckBoxList1.SelectedIndex == -1)
+            //{
+            //    for (int e = 0; e < dt3.Rows.Count; e++)
+            //    {
+            //        CheckBoxList1.DataValueField = dt3.Rows[e]["Vector_Id"].ToString();
+            //        CheckBoxList1.Items[0].Selected = true;
+            //    }
+            //}
         }
 
         protected void Submit_Click(object sender, EventArgs e)
         {
             String s = Request.QueryString["boosh"];
-
+            String q = TextBox3.Text;
             int count = 0;
             for (int a = 0; a < 5; a++)
             {
@@ -115,7 +117,13 @@ namespace MediBase
                 DiseaseDataSource.UpdateParameters.Add("Phenotype_Id", DropDownList1.SelectedValue);
                 // DiseaseDataSource.InsertParameters.Add("DiseaseId", TextBox2.Text);
                 DiseaseDataSource.UpdateParameters.Add("DiseaseId", "");
+
+
+                q = TextBox2.Text;
+                 q = TextBox3.Text;
+                 q = TextBox4.Text;
                 
+
 
                 DiseaseDataSource.UpdateCommandType = SqlDataSourceCommandType.Text;
                 DiseaseDataSource.UpdateCommand = "UPDATE [Diseases] SET [Name] = @Name, [Description] = @Description, [Prognosis] = @Prognosis, [Phenotype_Id] = @Phenotype_Id WHERE [Id] = " + s + "";
@@ -142,6 +150,10 @@ namespace MediBase
 
 
             }
+            Label1.Visible = true;
+            System.Threading.Thread.Sleep(2000);
+            Label1.Visible = false;
+            Response.Redirect("Results.aspx");
 
         }
         protected void DiseaseDataSource_Inserted(object sender, SqlDataSourceStatusEventArgs e)
@@ -178,10 +190,28 @@ namespace MediBase
 
             //    Disease_SymptomsDataSource.Insert();
             //}           
+            String s = Request.QueryString["boosh"];
             string txt = TextBox5.Text;
-            string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lst = txt.Split(new Char[] { '\n', '\r', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            string[] Add = new String[lst.Length]; ;
 
             //int a = lst.Length;
+            SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+            connection.Open();
+            DataTable dtAliases = new DataTable();
+
+            DataTable dtAl = new DataTable();
+            SqlCommand sqlCmdAl = new SqlCommand("SELECT * from Aliases WHERE Disease_Id = " + s + "", connection);
+            sqlCmdAl.Parameters.AddWithValue("@username", s);
+            SqlDataAdapter sqlDaAl = new SqlDataAdapter(sqlCmdAl);
+            
+
+                
+                //SqlDataSource3.DeleteParameters.Add(check1, Delete[aop]);
+                SqlDataSource3.DeleteCommandType = SqlDataSourceCommandType.Text;
+                SqlDataSource3.DeleteCommand = "DELETE FROM Aliases WHERE Aliases.Disease_Id = " + s + "";
+                SqlDataSource3.Delete();
 
             for (int a = 0; a < lst.Length; a++)
             {
@@ -191,23 +221,41 @@ namespace MediBase
                 SqlDataSource3.InsertCommand = "INSERT INTO Aliases(Name, Disease_Id) VALUES(@" + check + ", " + Data_Id + ")";
                 SqlDataSource3.Insert();
             }
+            
+            DataTable dtVe = new DataTable();
+            SqlCommand sqlCmdVe = new SqlCommand("SELECT * from Disease_Vectors WHERE Disease_Id = " + s + "", connection);
+            sqlCmdAl.Parameters.AddWithValue("@username", s);
+            SqlDataAdapter sqlDaVe = new SqlDataAdapter(sqlCmdVe);
+
+
+            sqlDaVe.Fill(dtVe);
             CheckBoxList chkbx = (CheckBoxList)FindControl("CheckBoxList1");
-            for (int b = 0; b < 5; b++)
+   
+
+
+                    //SqlDataSource4.DeleteParameters.Add(check1, Delete1[b]);
+                    SqlDataSource4.DeleteCommandType = SqlDataSourceCommandType.Text;
+                    SqlDataSource4.DeleteCommand = "DELETE FROM Disease_Vectors WHERE [Disease_Id] = " + s + "";
+
+                    SqlDataSource4.Delete();
+
+            for(int fo = 0; fo < 5; fo++)
             {
-                string check1 = "Vector_Id" + b;
-                if (CheckBoxList1.Items[b].Selected)
+                string check12 = "Vector_Id" + fo;
+                if (CheckBoxList1.Items[fo].Selected)
                 {
-                    SqlDataSource4.InsertParameters.Add(check1, CheckBoxList1.Items[b].Value);
+                    SqlDataSource4.InsertParameters.Add(check12, CheckBoxList1.Items[fo].Value);
                     SqlDataSource4.InsertCommandType = SqlDataSourceCommandType.Text;
-                    SqlDataSource4.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @" + check1 + ")";
+                    SqlDataSource4.InsertCommand = "INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @" + check12 + ")";
 
                     SqlDataSource4.Insert();
                 }
             }
 
 
-
-
+            //"INSERT INTO Disease_Vectors(Disease_Id, Vector_Id) VALUES(" + Data_Id + ", @" + check1 + ")"
+            //String myStringVariable = "Disease Updated";
+            
         }
 
 

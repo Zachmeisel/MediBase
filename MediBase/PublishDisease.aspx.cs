@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace MediBase
 {
@@ -94,34 +95,46 @@ namespace MediBase
 
             string txt2 = txtValues.Text;
             string[] newlist = txt2.Split(new Char[] { ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] IdSstring;
+            string[] IdSstring = new String[newlist.Length];
             System.Data.DataTable dt = new System.Data.DataTable();
             string bush = string.Empty;
 
-            for (int g = 0; g < newlist.Length; g++)
+            SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+            connection.Open();
+            DataTable dt3 = new DataTable();
+            SqlCommand sqlCmd3 = new SqlCommand("SELECT * from Symptoms ", connection);
+            // sqlCmd3.Parameters.AddWithValue("@username", user);
+            SqlDataAdapter sqlDa3 = new SqlDataAdapter(sqlCmd3);
+
+            sqlDa3.Fill(dt3);
+
+            int comcheck = 0;
+            int Incre = 0;
+            int DSincr = 0;
+
+            while (comcheck < newlist.Length)
             {
-                //SymptomsDataSource.SelectCommandType = SqlDataSourceCommandType.Text;
-                //SymptomsDataSource.SelectCommand = "SELECT [Id] FROM [Symptoms] WHERE ([Name] = @" + newlist[g] + ")";
-                //SymptomsDataSource.SelectParameters.Clear();
-                //SymptomsDataSource.SelectParameters.Add("Id", bush);
-                //SymptomsDataSource.
-                //SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
-                //SqlCommand command = new SqlCommand("SELECT Id FROM Symptoms", connection);
-                //connection.Open();
-                //SqlDataReader reader = command.ExecuteReader();
-                //reader.Read();
-                //bush = reader[0].ToString();
+                for (int hu = 0; hu < dt3.Rows.Count; hu++)
+                {
+                    if (newlist[comcheck] == dt3.Rows[hu]["Name"].ToString())
+                    {
+                        IdSstring[Incre] = dt3.Rows[hu]["Id"].ToString();
+                        Incre++;
+                        break;
+                    }
+                }
+                comcheck++;
 
             }
-            //for (int q = 0; q < txt2.Length; q++)
-            //{
-            //   string Sym_Check = "Symp" + q;
-            //    Disease_SymptomsDataSource.InsertParameters.Add(Sym_Check, newlist[q]);
-            //    Disease_SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
-            //    Disease_SymptomsDataSource.InsertCommand = "INSERT INTO Disease_Symptoms(Disease_Id, Symptom_Id) VALUES(" + Data_Id + ", @" + Sym_Check + ")";
+            for (int q = 0; q < IdSstring.Length; q++)
+            {
+                string Sym_Check = "Symp" + q;
+                Disease_SymptomsDataSource.InsertParameters.Add(Sym_Check, newlist[q]);
+                Disease_SymptomsDataSource.InsertCommandType = SqlDataSourceCommandType.Text;
+                Disease_SymptomsDataSource.InsertCommand = "INSERT INTO Disease_Symptoms(Disease_Id, Symptom_Id) VALUES(" + Data_Id + ", " + IdSstring[q] + ")";
 
-            //    Disease_SymptomsDataSource.Insert();
-            //}           
+                Disease_SymptomsDataSource.Insert();
+            }
             string txt = Aliases.Text;
             string[] lst = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 

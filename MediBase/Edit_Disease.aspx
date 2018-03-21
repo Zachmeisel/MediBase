@@ -204,7 +204,10 @@
         Pathogen:<asp:DropDownList ID="DropDownList1" runat="server" Height="38px" Width="175px" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id">
         </asp:DropDownList>
     </p>
+        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            </div>
     <p>
+        Add More
         Symptoms:</p>
     <div id="feedback"></div> 
     <div>
@@ -217,9 +220,11 @@
             </ul>
         </div>
         <br />
+        To Delete Symptoms you must delete the name and the &quot;;&quot;<br />
         
         <div>
-            <asp:TextBox ID="txtValues" runat="server" Width="390px" Visible="True" CssClass ="Hiddentextbox"></asp:TextBox>
+            <asp:TextBox ID="txtValues" runat="server" Width="390px" Visible="True"></asp:TextBox>
+            <br />
         </div>
     </div>
     <p>
@@ -228,7 +233,7 @@
     
     <p>
         Vectors:<asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px">
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px" OnLoad="Page_Load" OnPreRender="VectorLoad">
             </asp:CheckBoxList>
         </asp:Panel>
         <br />
@@ -241,10 +246,13 @@
         </p>
         <p>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Phenotype]"></asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Aliases]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Aliases]" OnSelecting="SqlDataSource3_Selecting"></asp:SqlDataSource>
         </p>
         <p>
             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Disease_Vectors]"></asp:SqlDataSource>
+        </p>
+        <p>
+            <asp:SqlDataSource ID="Disease_SymptomsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Disease_Symptoms]"></asp:SqlDataSource>
         </p>
     </div>
 </asp:Content>

@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="MediBase.Account.RegisterExternalLogin" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
 <h3>Register with your <%: ProviderName %> account</h3>
 
     <asp:PlaceHolder runat="server">
@@ -30,4 +33,6 @@
             </div>
         </div>
     </asp:PlaceHolder>
+        </div>
+        </body>
 </asp:Content>

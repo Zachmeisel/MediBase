@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Manage Password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManagePassword.aspx.cs" Inherits="MediBase.Account.ManagePassword" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
     <h2><%: Title %>.</h2>
     <div class="form-horizontal">
         <section id="passwordForm">
@@ -90,4 +93,6 @@
             </asp:PlaceHolder>
         </section>
     </div>
+        </div>
+        </body>
 </asp:Content>

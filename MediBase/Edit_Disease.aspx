@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit_Disease.aspx.cs" Inherits="MediBase.Edit_Disease" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit_Disease.aspx.cs" Inherits="MediBase.Edit_Disease" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    
     <style type="text/css">
@@ -172,27 +172,28 @@
     
     <p>
         <p>&nbsp &nbsp &nbsp</p>
-        <span style="font-size: xx-large">Edit Disease</span><br />
+        <span style="font-size: xx-large">
+            <asp:Label ID="Label2" runat="server" Text="Edit Disease" meta:resourcekey="Label2Resource1"></asp:Label></span><br />
     </p>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-        <asp:Label ID="Label1" runat="server" Text="Disease Updated" BackColor="#000066" BorderColor="#0000CC" ForeColor="White" Visible="False"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Disease Updated" BackColor="#000066" BorderColor="#0000CC" ForeColor="White" Visible="False" meta:resourcekey="Label1Resource1"></asp:Label>
         <br />
     <p>
-        Disease Name:
-        <asp:TextBox ID="TextBox2" runat="server" Width="178px"></asp:TextBox>
+        <asp:Label ID="Label3" runat="server" Text="Disease Name:" meta:resourcekey="Label3Resource1"></asp:Label>
+        <asp:TextBox ID="TextBox2" runat="server" Width="178px" meta:resourcekey="TextBox2Resource1"></asp:TextBox>
     </p>
     <div style="float:inherit">
     <p>
-        Disease Description:
-    <asp:TextBox ID="TextBox3" runat="server" Height="55px" style="margin-top: 0px" Width="260px" TextMode="MultiLine"></asp:TextBox>
+        <asp:Label ID="Label4" runat="server" Text="Disease Description:" meta:resourcekey="Label4Resource1"></asp:Label>
+    <asp:TextBox ID="TextBox3" runat="server" Height="55px" style="margin-top: 0px" Width="260px" TextMode="MultiLine" meta:resourcekey="TextBox3Resource1"></asp:TextBox>
     </p>
     </div>
     <p>&nbsp;</p>
     <div style="float:inherit">
     <p>
-        &nbsp;Prognosis:
+        &nbsp;<asp:Label ID="Label5" runat="server" Text="Prognosis:" meta:resourcekey="Label5Resource1"></asp:Label>
         
-    <asp:TextBox ID="TextBox4" runat="server" Height="63px" style="margin-top: 0px" Width="240px" TextMode="MultiLine"></asp:TextBox>
+    <asp:TextBox ID="TextBox4" runat="server" Height="63px" style="margin-top: 0px" Width="240px" TextMode="MultiLine" meta:resourcekey="TextBox4Resource1"></asp:TextBox>
     
     </p>
     </div>
@@ -201,14 +202,14 @@
     
     <p>&nbsp;</p>
     <p>
-        Pathogen:<asp:DropDownList ID="DropDownList1" runat="server" Height="38px" Width="175px" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id">
+        <asp:Label ID="Label6" runat="server" Text="Pathogen:" meta:resourcekey="Label6Resource1"></asp:Label><asp:DropDownList ID="DropDownList1" runat="server" Height="38px" Width="175px" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id" meta:resourcekey="DropDownList1Resource1">
         </asp:DropDownList>
     </p>
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
             </div>
     <p>
-        Add More
-        Symptoms:</p>
+        <asp:Label ID="Label7" runat="server" Text="Add More
+        Symptoms:" meta:resourcekey="Label7Resource1"></asp:Label></p>
     <div id="feedback"></div> 
     <div>
         <div class="textboxlist" id="mydivTextBox">
@@ -220,26 +221,26 @@
             </ul>
         </div>
         <br />
-        To Delete Symptoms you must delete the name and the &quot;;&quot;<br />
+        <asp:Label ID="Label8" runat="server" Text="To Delete Symptoms you must delete the name and the " meta:resourcekey="Label8Resource1"></asp:Label> &quot;;&quot;<br />
         
         <div>
-            <asp:TextBox ID="txtValues" runat="server" Width="390px" Visible="True"></asp:TextBox>
+            <asp:TextBox ID="txtValues" runat="server" Width="390px" meta:resourcekey="txtValuesResource1"></asp:TextBox>
             <br />
         </div>
     </div>
     <p>
-        Aliases:<asp:TextBox ID="TextBox5" runat="server" Height="85px" TextMode="MultiLine" Width="314px"></asp:TextBox>
+        <asp:Label ID="Label9" runat="server" Text="Aliases:" meta:resourcekey="Label9Resource1"></asp:Label><asp:TextBox ID="TextBox5" runat="server" Height="85px" TextMode="MultiLine" Width="314px" meta:resourcekey="TextBox5Resource1"></asp:TextBox>
         </p>
     
     <p>
-        Vectors:<asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px">
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px" OnLoad="Page_Load" OnPreRender="VectorLoad">
+        <asp:Label ID="Label10" runat="server" Text="Vectors:" meta:resourcekey="Label10Resource1"></asp:Label><asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="143px" meta:resourcekey="Panel1Resource1">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px" OnLoad="Page_Load" OnPreRender="VectorLoad" meta:resourcekey="CheckBoxList1Resource1">
             </asp:CheckBoxList>
         </asp:Panel>
         <br />
         <br />
         <br />
-        <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />
+        <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" meta:resourcekey="SubmitResource1" />
         <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" SelectCommand="SELECT * FROM [Vectors]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="DiseaseDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DiseaseDatabaseConnection %>" OnUpdated="DiseaseDataSource_Inserted" SelectCommand="SELECT * FROM [Diseases]"></asp:SqlDataSource>

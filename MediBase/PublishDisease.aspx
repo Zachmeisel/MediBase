@@ -1,17 +1,21 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      
     <p>&nbsp;</p>
-    <h2><%: Title %>Publish Disease</h2>
-    <h3>Add a disease to our ever growing database</h3>
-    <p>Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts.</p>
+    <h2>
+        <asp:Label ID="Label1" runat="server" Text="Publish Disease" meta:resourcekey="Label1Resource2"></asp:Label></h2>
+    <h3>
+        <asp:Label ID="Label2" runat="server" Text="Add a disease to our ever growing database" meta:resourcekey="Label2Resource2"></asp:Label></h3>
+    <p>
+        <asp:Label ID="Label3" runat="server" Text="Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts." meta:resourcekey="Label3Resource2"></asp:Label></p>
 <p>&nbsp;</p>
     <style type="text/css">
         body
         {
             font: 11px "Lucida Grande" , Verdana;
             cursor: text;
+            color: white;
             background: #404040;
         }
         ul
@@ -175,25 +179,25 @@
 
     </script>
     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-    Name of Disease or Illness:
-    <asp:TextBox ID="DiseaseNameText" runat="server" Width="282px" BorderColor="White"></asp:TextBox>
+        <asp:Label ID="Label4" runat="server" Text="Name of Disease or Illness:" meta:resourcekey="Label4Resource1"></asp:Label>
+    <asp:TextBox ID="DiseaseNameText" runat="server" Width="282px" BorderColor="White" meta:resourcekey="DiseaseNameTextResource1"></asp:TextBox>
         <br />
         <br />
-        Disease Description:
-    <asp:TextBox ID="DiseaseDescription" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
-        <asp:Button ID="DiseaseDescriptionButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" Visible="False" />
+        <asp:Label ID="Label5" runat="server" Text="Disease Description:" meta:resourcekey="Label5Resource1"></asp:Label>
+    <asp:TextBox ID="DiseaseDescription" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine" meta:resourcekey="DiseaseDescriptionResource1"></asp:TextBox>
+        <asp:Button ID="DiseaseDescriptionButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" Visible="False" meta:resourcekey="DiseaseDescriptionButtonResource2" />
         <p>&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp; Prognosis:
-    <asp:TextBox ID="DiseasePrognosis" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine"></asp:TextBox>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label6" runat="server" Text="Prognosis:" meta:resourcekey="Label6Resource1"></asp:Label>
+    <asp:TextBox ID="DiseasePrognosis" runat="server" Width="204px" Columns="1" Height="70px" TextMode="MultiLine" meta:resourcekey="DiseasePrognosisResource1"></asp:TextBox>
         </p>
         <p>&nbsp;</p>
-        &nbsp;Pathogen:<asp:DropDownList ID="PathogenDropDown" runat="server" DataSourceID="PathogenDataSource" DataTextField="Name" DataValueField="Id" Height="16px" Width="186px">
+        &nbsp;<asp:Label ID="Label7" runat="server" Text="Pathogen:" meta:resourcekey="Label7Resource1"></asp:Label><asp:DropDownList ID="PathogenDropDown" runat="server" DataSourceID="PathogenDataSource" DataTextField="Name" DataValueField="Id" Height="16px" Width="186px" meta:resourcekey="PathogenDropDownResource1">
         </asp:DropDownList>
 &nbsp;<br />
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Symptoms Name:
+        <asp:Label ID="Label8" runat="server" Text="Symptoms Name:" meta:resourcekey="Label8Resource1"></asp:Label>
        <div id="feedback"></div> 
     <div>
         <div class="textboxlist" id="mydivTextBox">
@@ -207,30 +211,30 @@
         <br />
         
         <div>
-            <asp:TextBox ID="txtValues" runat="server" Width="390px" Visible="True" CssClass ="Hiddentextbox"></asp:TextBox>
+            <asp:TextBox ID="txtValues" runat="server" Width="390px" CssClass ="Hiddentextbox" meta:resourcekey="txtValuesResource1"></asp:TextBox>
         </div>
     </div>
   
         &nbsp;&nbsp;
-        <asp:Button ID="SymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" ToolTip="To add a symptom not coming up" Width="79px" />
+        <asp:Button ID="SymptomsButton" runat="server" OnClick="StrongSymptomsButton_Click" Text="Add" ToolTip="To add a symptom not coming up" Width="79px" meta:resourcekey="SymptomsButtonResource2" />
         <br />
         <br />
-        Aliases:
-    <asp:TextBox ID="Aliases" runat="server" Width="199px" Height="84px" TextMode="MultiLine"></asp:TextBox>
+        <asp:Label ID="Label9" runat="server" Text="Aliases:" meta:resourcekey="Label9Resource1"></asp:Label>
+    <asp:TextBox ID="Aliases" runat="server" Width="199px" Height="84px" TextMode="MultiLine" meta:resourcekey="AliasesResource1"></asp:TextBox>
         <br />
         <br />
-        Vectors:
+        <asp:Label ID="Label10" runat="server" Text="Vectors:" meta:resourcekey="Label10Resource1"></asp:Label>
         
 
         <br />
-        <asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px">
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="VectorsDataSource" DataTextField="Name" DataValueField="Id" TextAlign="Left">
+        <asp:Panel ID="Panel1" runat="server" Height="88px" style="margin-left: 513px" Width="206px" meta:resourcekey="Panel1Resource1">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="VectorsDataSource" DataTextField="Name" DataValueField="Id" TextAlign="Left" meta:resourcekey="CheckBoxList1Resource1">
             </asp:CheckBoxList>
         </asp:Panel>
         <br />
         <br />
         <br />
-        <asp:Button ID="SubmitButton0" runat="server" OnClick="SubmitButton0_Click" Text="Submit" Width="95px" />
+        <asp:Button ID="SubmitButton0" runat="server" OnClick="SubmitButton0_Click" Text="Submit" Width="95px" meta:resourcekey="SubmitButton0Resource2" />
         <br />
         <br />
         

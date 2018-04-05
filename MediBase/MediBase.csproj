@@ -205,7 +205,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Edit_Disease.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -383,13 +382,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Edit_Disease.aspx.cs">
-      <DependentUpon>Edit_Disease.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Edit_Disease.aspx.designer.cs">
-      <DependentUpon>Edit_Disease.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -439,9 +431,7 @@
       <DependentUpon>AddSymptoms.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Contact.aspx.resx" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -451,75 +441,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Contact.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\About.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\About.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\AddSymptoms.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\AddSymptoms.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Default.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Default.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Edit_Disease.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Edit_Disease.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\PublishDisease.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Results.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Results.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Site.Master.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Site.Master.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\PublishDisease.aspx.fr.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\About.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\AddSymptoms.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Contact.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Default.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Edit_Disease.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\PublishDisease.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Results.aspx.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Site.Master.de.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -532,7 +453,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62342</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -57,8 +57,20 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+#header {
+    background-color: lightblue;
+    height: 20px;
+    width: 100%;
+}
+
+#nav-bar {
+    background-color: lightgreen;
+    height: 5px;
+    width: 100%;
+}
 body {
   margin: 0;
+
 }
 
 a:focus {

@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Forgot password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="MediBase.Account.ForgotPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+        <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
     <h2><%: Title %>.</h2>
 
     <div class="row">
@@ -36,4 +39,6 @@
             </asp:PlaceHolder>
         </div>
     </div>
+        </div>
+        </body>
 </asp:Content>

@@ -99,7 +99,7 @@ namespace MediBase
             System.Data.DataTable dt = new System.Data.DataTable();
             string bush = string.Empty;
 
-            SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             connection.Open();
             DataTable dt3 = new DataTable();
             SqlCommand sqlCmd3 = new SqlCommand("SELECT * from Symptoms ", connection);
@@ -173,8 +173,8 @@ namespace MediBase
         }
         protected bool SympCheck(string []arr)
         {
-            
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DiseaseDatabase.mdf;Integrated Security=True");
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             conn.Open();
             //System.Data.DataTable dt = new System.Data.DataTable();
            

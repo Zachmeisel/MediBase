@@ -3,7 +3,7 @@
     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <body>
     <div class="customstyle">
-    <div style="margin-left: auto; margin-right: auto; text-align: center;">
+    <div style="margin-left: auto; margin-right: auto; margin-top: 40px; text-align: center;">
         <br />
         <br />
         <br />

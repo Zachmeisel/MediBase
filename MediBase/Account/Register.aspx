@@ -4,13 +4,13 @@
     <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <body>
     <div class="customstyle">
-    <h2 style="margin-top:40px;"><%: Title %>.</h2>
+    <h2 style="margin-top: 40px; margin-left:13px;"><%: Title %></h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
     <div class="form-horizontal">
-        <h4>Create a new account</h4>
+        <h4 style="margin-left:13px;">Create a new account</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
+                <asp:Button runat="server" style="margin-top: 10px; margin-bottom: 25px;" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>
     </div>

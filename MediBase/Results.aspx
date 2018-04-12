@@ -7,9 +7,9 @@
     <div class="customstyle">
 	<br />
 	<br />
-	&nbsp;<asp:TextBox ID="NameSearchTextBox" runat="server" Width="320px"></asp:TextBox>
+	&nbsp;<asp:TextBox ID="NameSearchTextBox" style="margin-top: 10px; margin-left:13px;" runat="server" Width="320px"></asp:TextBox>
 	<asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" />
-	<asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="ResultsDataSource" AllowPaging="True" OnRowDataBound="ResultsGridView_RowDataBound">
+	<asp:GridView ID="ResultsGridView" style="margin-top: 30px; margin-left:17px;" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="ResultsDataSource" AllowPaging="True" OnRowDataBound="ResultsGridView_RowDataBound">
 		<Columns>
 			<asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" Visible="True" />
 			<asp:BoundField DataField="DiseaseName" HeaderText="Name" SortExpression="Name" />

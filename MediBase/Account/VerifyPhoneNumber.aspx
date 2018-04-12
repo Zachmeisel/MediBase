@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Verify Phone Number" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VerifyPhoneNumber.aspx.cs" Inherits="MediBase.Account.VerifyPhoneNumber" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
  <h2><%: Title %>.</h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
@@ -25,4 +28,6 @@
             </div>
         </div>
     </div>
+        </div>
+        </body>
 </asp:Content>

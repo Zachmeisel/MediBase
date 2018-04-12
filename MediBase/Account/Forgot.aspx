@@ -1,13 +1,16 @@
 ﻿<%@ Page Title="Forgot password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="MediBase.Account.ForgotPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+        <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
+    <h2 style="margin-top: 40px; margin-left:13px;"><%: Title %></h2>
 
     <div class="row">
         <div class="col-md-8">
             <asp:PlaceHolder id="loginForm" runat="server">
                 <div class="form-horizontal">
-                    <h4>Forgot your password?</h4>
+                    <h4 style="margin-left:13px;">Forgot your password?</h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -36,4 +39,6 @@
             </asp:PlaceHolder>
         </div>
     </div>
+        </div>
+        </body>
 </asp:Content>

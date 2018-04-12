@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="Account Confirmation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Confirm.aspx.cs" Inherits="MediBase.Account.Confirm" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
+    <h2 style="margin-top: 40px; margin-left:13px;"><%: Title %></h2>
 
     <div>
         <asp:PlaceHolder runat="server" ID="successPanel" ViewStateMode="Disabled" Visible="true">
@@ -15,4 +18,6 @@
             </p>
         </asp:PlaceHolder>
     </div>
+        </div>
+        </body>
 </asp:Content>

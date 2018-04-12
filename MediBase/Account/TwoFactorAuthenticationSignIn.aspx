@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Two-Factor Authentication" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TwoFactorAuthenticationSignIn.aspx.cs" Inherits="MediBase.Account.TwoFactorAuthenticationSignIn" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
         <h2><%: Title %>.</h2>
     <asp:PlaceHolder runat="server" ID="sendcode">
         <section>
@@ -47,4 +50,6 @@
             </div>
         </section>
     </asp:PlaceHolder>
+        </div>
+        </body>
 </asp:Content>

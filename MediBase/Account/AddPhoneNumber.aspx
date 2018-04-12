@@ -1,10 +1,15 @@
-﻿<%@ Page Title="Phone Number" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddPhoneNumber.aspx.cs" Inherits="MediBase.Account.AddPhoneNumber" %>
+﻿<%@ Page Title="Phone Number"Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddPhoneNumber.aspx.cs" Inherits="MediBase.Account.AddPhoneNumber" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+ <link href ="/Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <body>
+    <div class="customstyle">
+    <h2 style="margin-top: 40px; margin-left:13px;"><%: Title %></h2>
 
     <div class="form-horizontal">
-        <h4>Add a phone number</h4>
+        <div class="spacing">
+        <h4 style="margin-left:2px;">Add a phone number.</h4>
+            </div>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <p class="text-danger">
@@ -25,4 +30,6 @@
             </div>
         </div>
     </div>
+        </div>
+        </body>
 </asp:Content>

@@ -1,14 +1,19 @@
-﻿body
-{
-    background-color:gray;
-}
-.jumbotron
-{
-    background-color:midnightblue;
-    color:white;
-}
-.row
-{
-    background-color: midnightblue;
+﻿body {
+    background: #404040;
     color: white;
+}
+
+.jumbotron {
+    background-color: #004ca0;
+    color: white;
+}
+
+.customstyle {
+    background-color: #004ca0;
+    color: white;
+}
+
+.spacing {
+    margin-top: 40px;
+    margin-left: 13px;
 }

@@ -1,0 +1,38 @@
+diseases
+	ID
+	name
+	description
+-	Phenotype_Id
+	prognosis
+	
+	timestamp
+	
+symptoms
+	ID
+	name
+	description
+	
+vectors
+	ID
+	name
+	description
+	
+Phenotypes
+	ID
+	name
+	description
+	
+aliases
+	ID
+-	disease_Id
+	name
+	
+disease symptoms
+	ID
+-	disease_Id
+-	symptom_Id
+
+disease vectors
+	ID
+-	disease_Id
+-	vector_Id

@@ -16,6 +16,11 @@ namespace MediBase
         {
             //   DiseaseDataSource.InsertCommand
             //   
+            bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            if (val1 == false)
+            {
+                Response.Redirect("Account/Login.aspx");
+            }
         }
         //TODO Delete me
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)

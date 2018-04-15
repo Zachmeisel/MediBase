@@ -1,13 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit_Disease.aspx.cs" Inherits="MediBase.Edit_Disease" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   
+   <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <style type="text/css">
-        body
-        {
-            font: 11px "Lucida Grande" , Verdana;
-            cursor: text;
-            background: #FFFFFF;
-        }
+
         ul
         {
             display: block;

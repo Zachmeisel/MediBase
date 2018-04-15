@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PublishDisease.aspx.cs" Inherits="MediBase.WebForm1" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     
+     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <p>&nbsp;</p>
     <h2>
         <asp:Label ID="Label1" runat="server" Text="Publish Disease" meta:resourcekey="Label1Resource2"></asp:Label></h2>
@@ -11,13 +11,7 @@
         <asp:Label ID="Label3" runat="server" Text="Feel free to submist a disease or illness to be added to our database. Just feel out the required fields and hit send it your entry will be put under review by our experts." meta:resourcekey="Label3Resource2"></asp:Label></p>
 <p>&nbsp;</p>
     <style type="text/css">
-        body
-        {
-            font: 11px "Lucida Grande" , Verdana;
-            cursor: text;
-            color: white;
-            background: #404040;
-        }
+
         ul
         {
             display: block;

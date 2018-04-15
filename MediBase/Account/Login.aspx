@@ -3,6 +3,8 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <p>&nbsp;</p>
     <h2><%: Title %>.</h2>
 
     <div class="row">

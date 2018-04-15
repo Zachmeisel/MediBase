@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="MediBase.Contact" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     
+     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <p>&nbsp;</p>
     <h2><asp:Label ID="Title" runat="server" Text="Contact" meta:resourcekey="Label1Resource1"></asp:Label></h2>
     <h3>

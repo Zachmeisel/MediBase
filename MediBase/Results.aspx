@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     
+     <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <br />
 	<br />
 	&nbsp;<asp:TextBox ID="NameSearchTextBox" runat="server" Width="320px" meta:resourcekey="NameSearchTextBoxResource1"></asp:TextBox>

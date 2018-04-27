@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit_Disease.aspx.cs" Inherits="MediBase.Edit_Disease" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
+    <link href ="Content/StyleSheet1.css" rel="stylesheet" type ="text/css" />
     <style type="text/css">
 
         ul
@@ -232,6 +232,8 @@
             <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id" TextAlign="Left" Height="33px" Width="129px" OnLoad="Page_Load" OnPreRender="VectorLoad" meta:resourcekey="CheckBoxList1Resource1">
             </asp:CheckBoxList>
         </asp:Panel>
+        <br />
+        <br />
         <br />
         <br />
         <br />

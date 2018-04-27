@@ -228,9 +228,10 @@
         <br />
         <br />
         <br />
+        <br />
+        <br />
+        
         <asp:Button ID="SubmitButton0" runat="server" OnClick="SubmitButton0_Click" Text="Submit" Width="95px" meta:resourcekey="SubmitButton0Resource2" />
-        <br />
-        <br />
         
         <br />
         <br />
